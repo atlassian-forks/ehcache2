@@ -16,20 +16,24 @@
   <version>2.11.1-SNAPSHOT</version>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/ehcache/ehcache2.git</developerConnection>
+    <connection>scm:git:ssh://git@github.com:atlassian-forks/ehcache2</connection>
+    <developerConnection>scm:git:ssh://git@github.com:atlassian-forks/ehcache2.git</developerConnection>
+    <url>https://github.com/atlassian-forks/ehcache2</url>
   </scm>
-  
+
   <properties>
-    <jetty.version>10.0.13</jetty.version>
-    <thirdparty-bom.version>4.4.1-SNAPSHOT</thirdparty-bom.version>
+    <jetty.version>10.0.16</jetty.version>
+    <thirdparty-bom.version>4.4.0.6.13</thirdparty-bom.version>
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
-    <management-core.version>4.4.1-SNAPSHOT</management-core.version>
+    <management-core.version>4.4.0.3.31</management-core.version>
     <clustered-entity-management.version>0.11.1</clustered-entity-management.version>
     <statistics.version>1.0.5</statistics.version>
     <quartz.version>2.2.3</quartz.version>
     <skipJavadoc>false</skipJavadoc>
     <groovy.version>4.0.5</groovy.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 
     <!-- only used for plugins.  Keep in sync with terracotta-third-party-bom-4.x -->
     <!-- hardcoded because https://issues.apache.org/jira/browse/MNG-5588 -->
@@ -135,25 +139,6 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-antrun-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
-          <groupId>org.terracotta</groupId>
-          <artifactId>maven-forge-plugin</artifactId>
-          <version>${maven-forge-plugin.version}</version>
-          <configuration>
-            <argLine>-Djava.net.preferIPv4Stack=true</argLine>
-            <trimStackTrace>false</trimStackTrace>
-            <reuseForks>false</reuseForks>
-            <jdk>
-              <version>1.${java.test.version}</version>
-              <vendor>${java.test.vendor}</vendor>
-            </jdk>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
           <version>3.4.0</version>
           <dependencies>
@@ -225,26 +210,49 @@
           <artifactId>maven-assembly-plugin</artifactId>
           <version>3.4.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <showDeprecation>true</showDeprecation>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
     <plugins>
       <plugin>
-        <groupId>org.terracotta</groupId>
-        <artifactId>maven-forge-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <remoteTagging>true</remoteTagging>
+          <releaseProfiles>default,installer</releaseProfiles>
+          <!--suppress UnresolvedMavenProperty -->
+
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-toolchains-plugin</artifactId>
+        <version>3.1.0</version>
         <executions>
           <execution>
-            <id>generateBuildInfoFile</id>
-            <phase>generate-resources</phase>
             <goals>
-              <goal>buildinfo</goal>
+              <goal>toolchain</goal>
             </goals>
-            <configuration>
-              <generateBuildInfoFile>true</generateBuildInfoFile>
-              <buildInfoLocation>${project.build.outputDirectory}</buildInfoLocation>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+          <toolchains>
+            <jdk>
+              <version>11</version>
+              <vendor>adoptium</vendor>
+            </jdk>
+          </toolchains>
+        </configuration>
       </plugin>
 
     </plugins>
@@ -313,21 +321,7 @@
 
             </dependencies>
           </plugin>
-          <plugin>
-            <groupId>org.terracotta</groupId>
-            <artifactId>maven-forge-plugin</artifactId>
-            <configuration>
-              <useReflectionFile>true</useReflectionFile>
-              <groups>org.terracotta.test.categories.CheckShorts</groups>
-              <systemProperties>
-                <property>
-                  <name>java.awt.headless</name>
-                  <value>true</value>
-                </property>
-              </systemProperties>
-              <trimStackTrace>false</trimStackTrace>
-            </configuration>
-          </plugin>
+
         </plugins>
       </build>
     </profile>
@@ -362,33 +356,19 @@
     </profile>
     <profile>
       <!-- Profile needed even though identical with one found in parent pom as distributionManagement is declared locally -->
-      <id>deploy-sonatype</id>
+      <id>atlassian-</id>
       <distributionManagement>
         <repository>
-          <id>sonatype-nexus-staging</id>
-          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+          <id>atlassian-3rdparty</id>
+          <url>https://packages.atlassian.com/maven/3rdparty</url>
         </repository>
         <snapshotRepository>
-          <id>sonatype-nexus-snapshots</id>
-          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          <id>atlassian-3rdparty-snapshot</id>
+          <url>https://packages.atlassian.com/maven/3rdparty-snapshot</url>
         </snapshotRepository>
       </distributionManagement>
     </profile>
   </profiles>
-
-  <distributionManagement>
-    <repository>
-      <id>terracotta-nexus-staging</id>
-      <name>Terracotta Nexus Staging Repository</name>
-      <url>${terracotta-nexus-staging-url}</url>
-    </repository>
-    <snapshotRepository>
-      <id>terracotta-os-snapshots</id>
-       <uniqueVersion>false</uniqueVersion>
-       <name>Terracotta OS Snapshots Repository</name>
-       <url>${terracotta-os-snapshots-url}</url>
-    </snapshotRepository>
-  </distributionManagement>
 
   <!-- minimal set to find the parent -->
   <repositories>

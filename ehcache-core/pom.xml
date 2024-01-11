@@ -183,62 +183,6 @@
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.terracotta</groupId>
-        <artifactId>maven-forge-plugin</artifactId>
-        <configuration>
-          <forkCount>1</forkCount>
-          <reuseForks>false</reuseForks>
-          <argLine>${tests.supplemental.args} ${tests.max.heap.size}</argLine>
-          <childDelegation>false</childDelegation>
-          <disableXmlReport>false</disableXmlReport>
-          <printSummary>true</printSummary>
-          <reportFormat>plain</reportFormat>
-          <redirectTestOutputToFile>false</redirectTestOutputToFile>
-          <systemPropertyVariables>
-            <java.awt.headless>true</java.awt.headless>
-            <net.sf.ehcache.speedAdjustmentFactor>${net.sf.ehcache.speedAdjustmentFactor}</net.sf.ehcache.speedAdjustmentFactor>
-            <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
-            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-          </systemPropertyVariables>
-          <classpathDependencyExcludes>
-            <classpathDependencyExclude>net.sf.ehcache:sizeof-agent</classpathDependencyExclude>
-          </classpathDependencyExcludes>
-          <trimStackTrace>false</trimStackTrace>
-        </configuration>
-        <executions>
-          <execution>
-            <id>build-info</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>buildinfo</goal>
-            </goals>
-            <configuration>
-              <rootPath>${basedir}/..</rootPath>
-            </configuration>
-          </execution>
-          <execution>
-            <!-- The default-test execution is automatically bound to the test phase by Surefire -->
-            <id>default-test</id>
-            <configuration>
-              <excludes>
-                <exclude>**/*$*</exclude>
-                <exclude>**/*PerfTest.java</exclude>
-                <exclude>**/*PerfTest*.java</exclude>
-                <exclude>**/Abstract*Test.java</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-          <execution>
-            <id>default-integration-test</id>
-            <configuration>
-              <skip>${checkshort}</skip> <!-- don't run these when check-short profile is on -->
-              <failIfNoTests>false</failIfNoTests>
-              <argLine>${tests.supplemental.args} -Xms512m -Xmx512m</argLine>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -347,25 +291,13 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.terracotta</groupId>
-            <artifactId>maven-forge-plugin</artifactId>
-            <executions>
-              <execution>
-                <!-- The default-test execution is automatically bound to the test phase by Surefire -->
-                <id>default-test</id>
-                <configuration>
-                  <argLine>${tests.supplemental.args} -Xmx512m</argLine>
-                  <includes>
-                    <include>**/*PerfTest.java</include>
-                    <include>**/*PerfTest*.java</include>
-                  </includes>
-                  <excludes>
-                    <exclude>**/*$*</exclude>
-                    <exclude>**/Abstract*Test.java</exclude>
-                  </excludes>
-                </configuration>
-              </execution>
-            </executions>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <version>2.5.3</version>
+            <configuration>
+              <remoteTagging>true</remoteTagging>
+              <releaseProfiles>default,installer</releaseProfiles>
+            </configuration>
           </plugin>
         </plugins>
       </build>
@@ -447,24 +379,7 @@
       <id>test-nonstopcache</id>
       <build>
         <plugins>
-          <plugin>
-            <groupId>org.terracotta</groupId>
-            <artifactId>maven-forge-plugin</artifactId>
-            <configuration>
-              <includes>
-                <include>**/nonstop/*Test.java</include>
-              </includes>
-              <excludes>
-                <exclude>**/*$*</exclude>
-              </excludes>
-              <systemProperties>
-                <property>
-                  <name>java.awt.headless</name>
-                  <value>true</value>
-                </property>
-              </systemProperties>
-            </configuration>
-          </plugin>
+
         </plugins>
       </build>
     </profile>

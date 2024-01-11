@@ -1,0 +1,11 @@
+
+K
+java:S1191"5Use classes from the Java API instead of Sun classes.(éª‚€
+V
+java:S2184o"@Cast one of the operands of this addition operation to a "long".(àˆÅÇ
+@
+java:S11815"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ
+B
+java:S30113",This accessibility update should be removed.(žÕ§ñ
+m
+java:S3776j"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ŒØ«Üüÿÿÿÿ

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ehcache" />
+        <module name="management-ehcache-common" />
+        <module name="ehcache-scheduled-refresh" />
+        <module name="ehcache-search-parser" />
+        <module name="ehcache-terracotta-bootstrap" />
+        <module name="management-ehcache-impl-v2" />
+        <module name="management-ehcache-impl-v1" />
+        <module name="management-ehcache-v2" />
+        <module name="management-ehcache-v1" />
+        <module name="ehcache-core" />
+        <module name="ehcache-rest-agent" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
