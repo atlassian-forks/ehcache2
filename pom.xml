@@ -16,20 +16,27 @@
   <version>2.11.1-SNAPSHOT</version>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/ehcache/ehcache2.git</developerConnection>
+    <connection>scm:git:ssh://git@bitbucket.org/atlassian/ehcache.git</connection>
+    <developerConnection>scm:git:ssh://git@bitbucket.org/atlassian/ehcache.git</developerConnection>
+    <url>https://bitbucket.org/atlassian/ehcache</url>
+    <tag>HEAD</tag>
   </scm>
   
   <properties>
     <jetty.version>10.0.13</jetty.version>
-    <thirdparty-bom.version>4.4.1-SNAPSHOT</thirdparty-bom.version>
+    <thirdparty-bom.version>4.4.0.6.13</thirdparty-bom.version>
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
-    <management-core.version>4.4.1-SNAPSHOT</management-core.version>
+    <management-core.version>4.4.0.3.31</management-core.version>
     <clustered-entity-management.version>0.11.1</clustered-entity-management.version>
     <statistics.version>1.0.5</statistics.version>
     <quartz.version>2.2.3</quartz.version>
     <skipJavadoc>false</skipJavadoc>
-    <groovy.version>4.0.5</groovy.version>
+    <project.name>ehcache</project.name>
+
+
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
+    <maven-forge-plugin.version>2.0.0</maven-forge-plugin.version>
+    <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 
     <!-- only used for plugins.  Keep in sync with terracotta-third-party-bom-4.x -->
     <!-- hardcoded because https://issues.apache.org/jira/browse/MNG-5588 -->
@@ -142,15 +149,6 @@
           <groupId>org.terracotta</groupId>
           <artifactId>maven-forge-plugin</artifactId>
           <version>${maven-forge-plugin.version}</version>
-          <configuration>
-            <argLine>-Djava.net.preferIPv4Stack=true</argLine>
-            <trimStackTrace>false</trimStackTrace>
-            <reuseForks>false</reuseForks>
-            <jdk>
-              <version>1.${java.test.version}</version>
-              <vendor>${java.test.vendor}</vendor>
-            </jdk>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -214,7 +212,7 @@
             <dependency>
               <groupId>org.apache.groovy</groupId>
               <artifactId>groovy-all</artifactId>
-              <version>${groovy.version}</version>
+              <version>4.0.9</version>
               <scope>runtime</scope>
               <type>pom</type>
             </dependency>
@@ -232,19 +230,8 @@
       <plugin>
         <groupId>org.terracotta</groupId>
         <artifactId>maven-forge-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>generateBuildInfoFile</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>buildinfo</goal>
-            </goals>
-            <configuration>
-              <generateBuildInfoFile>true</generateBuildInfoFile>
-              <buildInfoLocation>${project.build.outputDirectory}</buildInfoLocation>
-            </configuration>
-          </execution>
-        </executions>
+        <version>${maven-forge-plugin.version}</version>
+
       </plugin>
 
     </plugins>
@@ -276,6 +263,7 @@
           <plugin>
             <groupId>org.codehaus.gmavenplus</groupId>
             <artifactId>gmavenplus-plugin</artifactId>
+            <version>1.13.1</version>
             <executions>
               <execution>
                 <phase>process-test-classes</phase>
@@ -301,7 +289,7 @@
               <dependency>
                 <groupId>org.apache.groovy</groupId>
                 <artifactId>groovy-all</artifactId>
-                <version>${groovy.version}</version>
+                <version>4.0.9</version>
                 <scope>runtime</scope>
                 <type>pom</type>
               </dependency>
@@ -316,17 +304,7 @@
           <plugin>
             <groupId>org.terracotta</groupId>
             <artifactId>maven-forge-plugin</artifactId>
-            <configuration>
-              <useReflectionFile>true</useReflectionFile>
-              <groups>org.terracotta.test.categories.CheckShorts</groups>
-              <systemProperties>
-                <property>
-                  <name>java.awt.headless</name>
-                  <value>true</value>
-                </property>
-              </systemProperties>
-              <trimStackTrace>false</trimStackTrace>
-            </configuration>
+            <version>${maven-forge-plugin.version}</version>
           </plugin>
         </plugins>
       </build>
@@ -356,21 +334,22 @@
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.13</version>
           </plugin>
         </plugins>
       </build>
     </profile>
     <profile>
       <!-- Profile needed even though identical with one found in parent pom as distributionManagement is declared locally -->
-      <id>deploy-sonatype</id>
+      <id>atlassian-</id>
       <distributionManagement>
         <repository>
-          <id>sonatype-nexus-staging</id>
-          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+          <id>atlassian-3rdparty</id>
+          <url>https://packages.atlassian.com/maven/3rdparty</url>
         </repository>
         <snapshotRepository>
-          <id>sonatype-nexus-snapshots</id>
-          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          <id>atlassian-3rdparty-snapshot</id>
+          <url>https://packages.atlassian.com/maven/3rdparty-snapshot</url>
         </snapshotRepository>
       </distributionManagement>
     </profile>

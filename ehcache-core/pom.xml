@@ -173,6 +173,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <id>test-jar</id>
@@ -186,6 +187,7 @@
       <plugin>
         <groupId>org.terracotta</groupId>
         <artifactId>maven-forge-plugin</artifactId>
+        <version>${maven-forge-plugin.version}</version>
         <configuration>
           <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
@@ -205,6 +207,7 @@
             <classpathDependencyExclude>net.sf.ehcache:sizeof-agent</classpathDependencyExclude>
           </classpathDependencyExcludes>
           <trimStackTrace>false</trimStackTrace>
+          <outputDir/>
         </configuration>
         <executions>
           <execution>
@@ -229,20 +232,13 @@
               </excludes>
             </configuration>
           </execution>
-          <execution>
-            <id>default-integration-test</id>
-            <configuration>
-              <skip>${checkshort}</skip> <!-- don't run these when check-short profile is on -->
-              <failIfNoTests>false</failIfNoTests>
-              <argLine>${tests.supplemental.args} -Xms512m -Xmx512m</argLine>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <phase>verify</phase>
@@ -269,6 +265,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
@@ -289,6 +286,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>rmic-maven-plugin</artifactId>
+        <version>1.1</version>
         <executions>
           <execution>
             <id>rmi-compilation</id>
@@ -329,6 +327,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -349,6 +348,7 @@
           <plugin>
             <groupId>org.terracotta</groupId>
             <artifactId>maven-forge-plugin</artifactId>
+            <version>1.2.5</version>
             <executions>
               <execution>
                 <!-- The default-test execution is automatically bound to the test phase by Surefire -->
@@ -380,7 +380,7 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>buildnumber-maven-plugin</artifactId>
-            <version>1.0-beta-3</version>
+            <version>1.4</version>
             <executions>
               <execution>
                 <phase>generate-resources</phase>
@@ -450,6 +450,7 @@
           <plugin>
             <groupId>org.terracotta</groupId>
             <artifactId>maven-forge-plugin</artifactId>
+            <version>${maven-forge-plugin.version}</version>
             <configuration>
               <includes>
                 <include>**/nonstop/*Test.java</include>
@@ -463,6 +464,7 @@
                   <value>true</value>
                 </property>
               </systemProperties>
+              <outputDir/>
             </configuration>
           </plugin>
         </plugins>

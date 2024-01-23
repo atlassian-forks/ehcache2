@@ -14,7 +14,7 @@
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-root</artifactId>
     <version>2.11.1-SNAPSHOT</version>
-    <relativePath>pom.xml</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <groupId>net.sf.ehcache.examples</groupId>

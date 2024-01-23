@@ -6,7 +6,7 @@
     <groupId>net.sf.ehcache</groupId>
     <artifactId>management-ehcache-impl-parent</artifactId>
     <version>2.11.1-SNAPSHOT</version>
-    <relativePath>..</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>  
 
   <groupId>net.sf.ehcache.internal</groupId>
@@ -50,6 +50,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
       </plugin>
     </plugins>
   </build>
@@ -73,6 +74,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.3.0</version>
             <executions>
               <execution>
                 <id>list-dependencies</id>
@@ -90,6 +92,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
+            <version>3.4.0</version>
             <configuration>
               <shaderHint>reduced-pom-only-shader</shaderHint>
               <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
@@ -129,7 +132,8 @@
         <plugins>            
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-shade-plugin</artifactId>           
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.4.0</version>
             <configuration>
               <shaderHint>record-shader</shaderHint>
               <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
@@ -169,6 +173,7 @@
           <plugin>
             <groupId>org.codehaus.gmaven</groupId>
             <artifactId>groovy-maven-plugin</artifactId>
+            <version>${groovy-maven-plugin.version}</version>
             <executions>
               <execution>
                 <id>fix-content</id>
@@ -179,11 +184,7 @@
                 <configuration>
                   <scriptpath>
                     <element>${basedir}/src/scripts</element>
-                  </scriptpath>            
-                  <source>
-                    import Util
-                    Util.packageAgentJar(project)
-                  </source>
+                  </scriptpath>
                 </configuration>
               </execution>
             </executions>
