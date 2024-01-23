@@ -7,7 +7,7 @@
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-root</artifactId>
     <version>2.11.1-SNAPSHOT</version>
-    <relativePath>../../pom.xml</relativePath>
+    <relativePath>pom.xml</relativePath>
   </parent>
 
   <groupId>net.sf.ehcache.examples</groupId>
@@ -18,9 +18,12 @@
   <description>Clustered Ehcache Terracotta as second level cache for Hibernate</description>
 
   <properties>
-    <terracotta.version>4.4.1-SNAPSHOT</terracotta.version>
+    <terracotta.version>4.4.0.8.17</terracotta.version>
     <exec-maven-plugin.version>1.1</exec-maven-plugin.version>
     <skipDeploy>true</skipDeploy>
+    <project.name>ehcache</project.name>
+    <project.version>2.11.1-SNAPSHOT</project.version>
+
   </properties>
 
   <dependencies>

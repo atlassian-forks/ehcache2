@@ -5,7 +5,7 @@
   <parent>
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-root</artifactId>
-    <version>2.11.1-SNAPSHOT</version>
+    <version> 2.11.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>ehcache-kit</artifactId>
@@ -13,27 +13,28 @@
   <name>ehcache-kit</name>
 
   <description>project to build distribution kit</description>
-  
+<!--
   <modules>
     <module>colorcache</module>
     <module>events</module>
-  </modules>
+  </modules>-->
   
   <properties>
     <productName>ehcache</productName>
-    <kitFolder>${productName}-${project.version}</kitFolder>
+    <project.version>2.11.1-SNAPSHOT</project.version>
+<!--    <kitFolder>${productName}-${project.version}</kitFolder>
     <tarballName>${kitFolder}-distribution</tarballName>
     <root.dir>${project.build.directory}/${kitFolder}</root.dir>
-    <terracotta.kit.path>${project.build.directory}/tmp/terracotta</terracotta.kit.path>
+    <terracotta.kit.path>${project.build.directory}/tmp/terracotta</terracotta.kit.path>-->
   </properties>
 
-  <dependencies>
+ <!-- <dependencies>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
-    </dependency>   
+    </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -43,29 +44,10 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jdk14</artifactId>
       <scope>provided</scope>
-    </dependency>   
+    </dependency>
   </dependencies>
-  
-  <profiles>
-    <profile>
-      <id>includeJavadoc</id>
-      <activation>
-        <property>
-          <name>!skipJavadoc</name>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>net.sf.ehcache</groupId>
-          <artifactId>ehcache</artifactId>
-          <version>${project.version}</version>
-          <classifier>javadoc</classifier>
-          <scope>provided</scope>
-        </dependency>  
-      </dependencies>
-    </profile>
-  </profiles>
-  
+
+
   <build>
     <plugins>
       <plugin>
@@ -75,7 +57,7 @@
         <configuration>
           <verbose>false</verbose>
           <resources>
-            <!-- clean up -->
+            &lt;!&ndash; clean up &ndash;&gt;
             <resource>
               <runIf>{{ new File( project.build.directory, "${kitFolder}" ).isDirectory() }}</runIf>
               <directory>${root.dir}</directory>
@@ -85,20 +67,20 @@
               <clean>true</clean>
               <cleanEmptyDirectories>true</cleanEmptyDirectories>
             </resource>
-            <!-- skeleton -->                
+            &lt;!&ndash; skeleton &ndash;&gt;
             <resource>
               <targetPath>${root.dir}</targetPath>
               <directory>${basedir}/src/main/assembly/root</directory>
               <filtering>true</filtering>
               <preservePath>true</preservePath>
             </resource>
-            <!-- ehcache.(xsd|xml) -->
+            &lt;!&ndash; ehcache.(xsd|xml) &ndash;&gt;
             <resource>
               <targetPath>${root.dir}</targetPath>
               <directory>${basedir}/../ehcache-core/src/main/config</directory>
               <preservePath>true</preservePath>
             </resource>
-            <!-- src -->
+            &lt;!&ndash; src &ndash;&gt;
             <resource>
               <targetPath>${root.dir}/src</targetPath>
               <dependencies>
@@ -110,20 +92,16 @@
               </dependencies>
               <unpack>true</unpack>
             </resource>
-            <!-- javadoc -->
+            &lt;!&ndash; javadoc &ndash;&gt;
             <resource>
               <failIfNotFound>false</failIfNotFound>
               <targetPath>${root.dir}/javadoc</targetPath>
               <dependencies>
-                <dependency>
-                  <groupId>net.sf.ehcache</groupId>
-                  <artifactId>ehcache</artifactId>
-                  <classifier>javadoc</classifier>
-                </dependency>
+
               </dependencies>
               <unpack>true</unpack>
-            </resource> 
-            <!-- clustered example -->                
+            </resource>
+            &lt;!&ndash; clustered example &ndash;&gt;
             <resource>
               <runIf>{{ new File(project.properties['terracotta.kit.path']).isDirectory() }}</runIf>
               <targetPath>${root.dir}/samples</targetPath>
@@ -138,14 +116,14 @@
                 <dependency>
                   <groupId>net.sf.ehcache.examples</groupId>
                   <artifactId>colorcache</artifactId>
-                  <version>${project.version}</version>
+                  <version>2.11.1-SNAPSHOT</version>
                   <classifier>distribution</classifier>
                   <type>tar.gz</type>
-                </dependency>                
+                </dependency>
               </dependencies>
               <unpack>true</unpack>
-            </resource>            
-            <!-- terracotta -->                
+            </resource>
+            &lt;!&ndash; terracotta &ndash;&gt;
             <resource>
               <runIf>{{ new File(project.properties['terracotta.kit.path']).isDirectory() }}</runIf>
               <targetPath>${root.dir}/terracotta</targetPath>
@@ -178,7 +156,7 @@
               <includes>
                 <include>relative-paths.*</include>
               </includes>
-            </resource>             
+            </resource>
           </resources>
         </configuration>
         <executions>
@@ -189,14 +167,14 @@
               <goal>copy</goal>
             </goals>
           </execution>
-        </executions>            
+        </executions>
       </plugin>
-      <!-- look up slf4j.version -->
+      &lt;!&ndash; look up slf4j.version &ndash;&gt;
       <plugin>
         <groupId>org.codehaus.gmavenplus</groupId>
         <artifactId>gmavenplus-plugin</artifactId>
       </plugin>
-      <!-- package lib folder, use this plugin to get proper SNAPSHOT file name -->
+      &lt;!&ndash; package lib folder, use this plugin to get proper SNAPSHOT file name &ndash;&gt;
       <plugin>
         <groupId>org.terracotta</groupId>
         <artifactId>maven-forge-plugin</artifactId>
@@ -217,11 +195,12 @@
               </artifacts>
             </configuration>
           </execution>
-        </executions>          
-      </plugin>      
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>groovy-maven-plugin</artifactId>
+        <version>2.1.1</version>
         <executions>
           <execution>
             <id>create-tarball</id>
@@ -229,19 +208,19 @@
             <goals>
               <goal>execute</goal>
             </goals>
-            <configuration>         
+            <configuration>
               <source>
-                def srcdir = new File(project.basedir, "target/${kitFolder}") 
-                def destFile = new File(project.basedir, "target/${tarballName}.tar.gz") 
+                def srcdir = new File(project.basedir, "target/${kitFolder}")
+                def destFile = new File(project.basedir, "target/${tarballName}.tar.gz")
                 ant.tar(destfile: "${destFile}", longfile: "gnu", compression: "gzip") {
                   tarfileset(dir: "${srcdir}", prefix: "${kitFolder}", excludes: "**/bin/**,**/lib/**,**/*.sh,**/*.bat")
                   tarfileset(dir: "${srcdir}", prefix: "${kitFolder}", includes: "**/bin/**,**/lib/**,**/*.sh,**/*.bat", filemode: "755")
-                } 
+                }
               </source>
             </configuration>
-          </execution>              
+          </execution>
         </executions>
-      </plugin>        
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -259,13 +238,14 @@
                   <file>${project.build.directory}/${tarballName}.tar.gz</file>
                   <type>tar.gz</type>
                   <classifier>distribution</classifier>
-                </artifact>                
+                </artifact>
               </artifacts>
             </configuration>
           </execution>
         </executions>
-      </plugin>    
+      </plugin>
     </plugins>
-  </build>
+  </build>-->
+
 
 </project>
