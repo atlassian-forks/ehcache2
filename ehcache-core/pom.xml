@@ -208,6 +208,9 @@
           </classpathDependencyExcludes>
           <trimStackTrace>false</trimStackTrace>
           <outputDir/>
+          <apiArtifact/>
+          <clientArtifact/>
+          <serverArtifact/>
         </configuration>
         <executions>
           <execution>
@@ -283,10 +286,10 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
+     <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>rmic-maven-plugin</artifactId>
-        <version>1.1</version>
+        <version>1.3</version>
         <executions>
           <execution>
             <id>rmi-compilation</id>
@@ -465,6 +468,9 @@
                 </property>
               </systemProperties>
               <outputDir/>
+              <apiArtifact/>
+              <clientArtifact/>
+              <serverArtifact/>
             </configuration>
           </plugin>
         </plugins>
