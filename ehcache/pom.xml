@@ -5,8 +5,8 @@
   <parent>
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-root</artifactId>
-    <version>2.11.1-SNAPSHOT</version>
-    <relativePath>..</relativePath>
+    <version>2.11.1-atlassian-1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>ehcache</artifactId>
@@ -33,7 +33,7 @@
   </properties>
 
   <dependencies>
-    <!-- internal components used for shading which will be removed in final 
+    <!-- internal components used for shading which will be removed in final
       pom -->
     <dependency>
       <groupId>net.sf.ehcache.internal</groupId>
@@ -195,7 +195,7 @@
                 <id>list-dependencies</id>
                 <configuration>
                   <outputFile>${project.build.outputDirectory}/META-INF/devmode/${project.groupId}/${project.artifactId}/dependencies.txt</outputFile>
-                </configuration>                
+                </configuration>
                 <goals>
                   <goal>list</goal>
                 </goals>
@@ -203,7 +203,7 @@
               </execution>
             </executions>
           </plugin>
-        </plugins>          
+        </plugins>
       </build>
     </profile>
 
@@ -250,14 +250,14 @@
                   <skip>${skipJavadoc}</skip>
                   <author>true</author>
                   <minmemory>128m</minmemory>
-                  <maxmemory>512</maxmemory>              
+                  <maxmemory>512</maxmemory>
                   <quiet>true</quiet>
                   <header><![CDATA[<a href="/" target="_top">ehcache</a>]]></header>
                   <doctitle>${project.name} ${project.version} API</doctitle>
                   <windowtitle>${project.name} ${project.version} API</windowtitle>
                   <bottom>Copyright 2001-{currentYear}, Terracotta, Inc.</bottom>
                   <overview>${basedir}/src/main/java/net/sf/ehcache/overview.html</overview>
-                  <includeDependencySources>true</includeDependencySources>      
+                  <includeDependencySources>true</includeDependencySources>
                   <dependencySourceIncludes>
                     <dependencySourceInclude>net.sf.ehcache.internal:ehcache-core</dependencySourceInclude>
                   </dependencySourceIncludes>
@@ -265,11 +265,11 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin>       
-          
+          </plugin>
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-shade-plugin</artifactId>            
+            <artifactId>maven-shade-plugin</artifactId>
             <configuration>
               <shaderHint>record-shader</shaderHint>
               <useBaseVersion>true</useBaseVersion>
@@ -298,7 +298,7 @@
                     <exclude>**/NOTICE</exclude>
                     <exclude>**/NOTICE.txt</exclude>
                     <exclude>**/ASL2.0</exclude>
-                    <exclude>**/DEPENDENCIES</exclude>                    
+                    <exclude>**/DEPENDENCIES</exclude>
                   </excludes>
                 </filter>
               </filters>
@@ -336,12 +336,12 @@
                 </goals>
                 <configuration>
                   <target>
-                    <unzip src="${project.build.directory}/${project.artifactId}-${project.version}.jar" dest="${project.build.outputDirectory}"/>
+                    <unzip src="${project.build.directory}/${project.artifactId}-${project.version}.jar" dest="${project.build.outputDirectory}" />
                   </target>
                 </configuration>
               </execution>
             </executions>
-          </plugin>           
+          </plugin>
           <plugin>
             <groupId>org.apache.felix</groupId>
             <artifactId>maven-bundle-plugin</artifactId>
@@ -391,7 +391,7 @@
                   <goal>manifest</goal>
                 </goals>
               </execution>
-            </executions>            
+            </executions>
           </plugin>
           <plugin>
             <groupId>org.codehaus.gmaven</groupId>
@@ -414,7 +414,7 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin>           
+          </plugin>
         </plugins>
       </build>
     </profile>

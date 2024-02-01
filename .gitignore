@@ -3,3 +3,9 @@
 /target
 /.settings
 /*.iml
+distribution/events/pom.xml.versionsBackup
+distribution/colorcache/pom.xml.versionsBackup
+distribution/pom.xml.versionsBackup
+/release.properties
+.idea/
+.java-version
