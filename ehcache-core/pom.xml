@@ -322,7 +322,7 @@
         <skipDeploy>true</skipDeploy>
       </properties>
     </profile>
-    <profile>
+    <!--<profile>
       <id>staging</id>
       <build>
         <plugins>
@@ -341,7 +341,7 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
+    </profile>-->
     <profile>
       <id>perfTests</id>
       <build>
