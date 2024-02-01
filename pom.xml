@@ -149,6 +149,15 @@
           <groupId>org.terracotta</groupId>
           <artifactId>maven-forge-plugin</artifactId>
           <version>${maven-forge-plugin.version}</version>
+          <configuration>
+            <argLine>-Djava.net.preferIPv4Stack=true</argLine>
+            <trimStackTrace>false</trimStackTrace>
+            <reuseForks>false</reuseForks>
+            <jdk>
+              <version>1.${java.test.version}</version>
+              <vendor>${java.test.vendor}</vendor>
+            </jdk>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -201,7 +210,7 @@
                             'slf4j.version'           : find('slf4j-api'),
                             'hibernate-core.version'  : find('hibernate-core')
                     ]
-                    println "Resolved dependency versions: ${props}"
+
                     project.properties.putAll(props)
                     ]]></script>
                 </scripts>
@@ -230,8 +239,19 @@
       <plugin>
         <groupId>org.terracotta</groupId>
         <artifactId>maven-forge-plugin</artifactId>
-        <version>${maven-forge-plugin.version}</version>
-
+        <executions>
+          <execution>
+            <id>generateBuildInfoFile</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>buildinfo</goal>
+            </goals>
+            <configuration>
+              <generateBuildInfoFile>true</generateBuildInfoFile>
+              <buildInfoLocation>${project.build.outputDirectory}</buildInfoLocation>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
