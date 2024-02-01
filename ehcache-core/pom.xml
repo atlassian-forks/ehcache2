@@ -322,13 +322,16 @@
         <skipDeploy>true</skipDeploy>
       </properties>
     </profile>
-    <!--<profile>
+    <profile>
       <id>staging</id>
       <build>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -341,7 +344,7 @@
           </plugin>
         </plugins>
       </build>
-    </profile>-->
+    </profile>
     <profile>
       <id>perfTests</id>
       <build>
