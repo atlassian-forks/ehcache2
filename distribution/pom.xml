@@ -47,7 +47,7 @@
   </dependencies>
 
   <profiles>
-    <!--<profile>
+    <profile>
       <id>includeJavadoc</id>
       <activation>
         <property>
@@ -63,7 +63,7 @@
           <scope>provided</scope>
         </dependency>
       </dependencies>
-    </profile>-->
+    </profile>
   </profiles>
 
   <build>

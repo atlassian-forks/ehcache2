@@ -1,14 +1,11 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-parent</artifactId>
     <version>5.0</version>
-    <relativePath />
+    <relativePath/>
   </parent>
-
   <name>ehcache-root</name>
   <groupId>net.sf.ehcache</groupId>
   <artifactId>ehcache-root</artifactId>
@@ -19,9 +16,7 @@
     <developerConnection>scm:git:https://github.com/atlassian-forks/ehcache2.git</developerConnection>
     <tag>ehcache-root-2.11.1-atlassian-1-m03</tag>
   </scm>
-
   <properties>
-    <terracotta.version />
     <jetty.version>10.0.16</jetty.version>
     <thirdparty-bom.version>4.4.0.5.17</thirdparty-bom.version>
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
@@ -105,14 +100,6 @@
           </configuration>
         </plugin>
         <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-invoker-plugin</artifactId>
-        <version>3.3.0</version>
-        <configuration>
-          <settingsFile>/Users/asharma11/.m2/settings.xml</settingsFile>
-        </configuration>
-      </plugin>
-        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.3.0</version>
@@ -159,7 +146,7 @@
         <plugin>
           <groupId>org.terracotta</groupId>
           <artifactId>maven-forge-plugin</artifactId>
-
+          <version>${maven-forge-plugin.version}</version>
           <configuration>
             <argLine>-Djava.net.preferIPv4Stack=true</argLine>
             <trimStackTrace>false</trimStackTrace>
