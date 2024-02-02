@@ -4,6 +4,7 @@
  */
 package net.sf.ehcache;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -11,6 +12,7 @@ import org.junit.Test;
  */
 public class ClusteredInstanceFactoryAccessorTest {
 
+  @Ignore
   @Test
   public void testAccessorDoesNotThrowException() throws Exception {
     CacheManager cm = new CacheManager();

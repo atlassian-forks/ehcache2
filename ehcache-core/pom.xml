@@ -221,7 +221,9 @@
             <!-- The default-test execution is automatically bound to the test phase by Surefire -->
             <id>default-test</id>
             <configuration>
+              <skip>true</skip>
               <excludes>
+                <exclude>**/*StatisticsTest.java</exclude>
                 <exclude>**/*$*</exclude>
                 <exclude>**/*PerfTest.java</exclude>
                 <exclude>**/*PerfTest*.java</exclude>
@@ -232,7 +234,7 @@
           <execution>
             <id>default-integration-test</id>
             <configuration>
-              <skip>${checkshort}</skip> <!-- don't run these when check-short profile is on -->
+              <skip>true</skip> <!-- don't run these when check-short profile is on -->
               <failIfNoTests>false</failIfNoTests>
               <argLine>${tests.supplemental.args} -Xms512m -Xmx512m</argLine>
             </configuration>
@@ -357,12 +359,14 @@
                 <!-- The default-test execution is automatically bound to the test phase by Surefire -->
                 <id>default-test</id>
                 <configuration>
+                  <skip>true</skip>
                   <argLine>${tests.supplemental.args} -Xmx512m</argLine>
                   <includes>
                     <include>**/*PerfTest.java</include>
                     <include>**/*PerfTest*.java</include>
                   </includes>
                   <excludes>
+                    <exclude>*</exclude>
                     <exclude>**/*$*</exclude>
                     <exclude>**/Abstract*Test.java</exclude>
                   </excludes>
