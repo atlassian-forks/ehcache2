@@ -13,12 +13,12 @@
   <name>ehcache-kit</name>
 
   <description>project to build distribution kit</description>
-  
+
   <modules>
     <module>colorcache</module>
     <module>events</module>
   </modules>
-  
+
   <properties>
     <productName>ehcache</productName>
     <kitFolder>${productName}-${project.version}</kitFolder>
@@ -33,7 +33,7 @@
       <artifactId>ehcache</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
-    </dependency>   
+    </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -43,11 +43,11 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jdk14</artifactId>
       <scope>provided</scope>
-    </dependency>   
+    </dependency>
   </dependencies>
-  
+
   <profiles>
-    <profile>
+    <!--<profile>
       <id>includeJavadoc</id>
       <activation>
         <property>
@@ -61,11 +61,11 @@
           <version>${project.version}</version>
           <classifier>javadoc</classifier>
           <scope>provided</scope>
-        </dependency>  
+        </dependency>
       </dependencies>
-    </profile>
+    </profile>-->
   </profiles>
-  
+
   <build>
     <plugins>
       <plugin>
@@ -85,7 +85,7 @@
               <clean>true</clean>
               <cleanEmptyDirectories>true</cleanEmptyDirectories>
             </resource>
-            <!-- skeleton -->                
+            <!-- skeleton -->
             <resource>
               <targetPath>${root.dir}</targetPath>
               <directory>${basedir}/src/main/assembly/root</directory>
@@ -122,8 +122,8 @@
                 </dependency>
               </dependencies>
               <unpack>true</unpack>
-            </resource> 
-            <!-- clustered example -->                
+            </resource>
+            <!-- clustered example -->
             <resource>
               <runIf>{{ new File(project.properties['terracotta.kit.path']).isDirectory() }}</runIf>
               <targetPath>${root.dir}/samples</targetPath>
@@ -141,11 +141,11 @@
                   <version>${project.version}</version>
                   <classifier>distribution</classifier>
                   <type>tar.gz</type>
-                </dependency>                
+                </dependency>
               </dependencies>
               <unpack>true</unpack>
-            </resource>            
-            <!-- terracotta -->                
+            </resource>
+            <!-- terracotta -->
             <resource>
               <runIf>{{ new File(project.properties['terracotta.kit.path']).isDirectory() }}</runIf>
               <targetPath>${root.dir}/terracotta</targetPath>
@@ -178,7 +178,7 @@
               <includes>
                 <include>relative-paths.*</include>
               </includes>
-            </resource>             
+            </resource>
           </resources>
         </configuration>
         <executions>
@@ -189,7 +189,7 @@
               <goal>copy</goal>
             </goals>
           </execution>
-        </executions>            
+        </executions>
       </plugin>
       <!-- look up slf4j.version -->
       <plugin>
@@ -217,8 +217,8 @@
               </artifacts>
             </configuration>
           </execution>
-        </executions>          
-      </plugin>      
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>groovy-maven-plugin</artifactId>
@@ -229,19 +229,19 @@
             <goals>
               <goal>execute</goal>
             </goals>
-            <configuration>         
+            <configuration>
               <source>
-                def srcdir = new File(project.basedir, "target/${kitFolder}") 
-                def destFile = new File(project.basedir, "target/${tarballName}.tar.gz") 
+                def srcdir = new File(project.basedir, "target/${kitFolder}")
+                def destFile = new File(project.basedir, "target/${tarballName}.tar.gz")
                 ant.tar(destfile: "${destFile}", longfile: "gnu", compression: "gzip") {
                   tarfileset(dir: "${srcdir}", prefix: "${kitFolder}", excludes: "**/bin/**,**/lib/**,**/*.sh,**/*.bat")
                   tarfileset(dir: "${srcdir}", prefix: "${kitFolder}", includes: "**/bin/**,**/lib/**,**/*.sh,**/*.bat", filemode: "755")
-                } 
+                }
               </source>
             </configuration>
-          </execution>              
+          </execution>
         </executions>
-      </plugin>        
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -259,12 +259,12 @@
                   <file>${project.build.directory}/${tarballName}.tar.gz</file>
                   <type>tar.gz</type>
                   <classifier>distribution</classifier>
-                </artifact>                
+                </artifact>
               </artifacts>
             </configuration>
           </execution>
         </executions>
-      </plugin>    
+      </plugin>
     </plugins>
   </build>
 
