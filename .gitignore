@@ -3,3 +3,5 @@
 /target
 /.settings
 /*.iml
+.idea/
+.java-version
