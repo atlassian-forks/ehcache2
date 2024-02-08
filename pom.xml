@@ -21,7 +21,7 @@
   </scm>
 
   <properties>
-    <jetty.version>10.0.16</jetty.version>
+    <jetty.version>10.0.20</jetty.version>
     <thirdparty-bom.version>4.4.0.5.17</thirdparty-bom.version>
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
     <management-core.version>4.4.0.3.31</management-core.version>
@@ -41,8 +41,6 @@
     <module>ehcache-core</module>
     <module>terracotta</module>
     <module>ehcache</module>
-    <module>management-ehcache-v1</module>
-    <module>management-ehcache-v2</module>
     <module>management-ehcache-impl</module>
     <module>ehcache-scheduled-refresh</module>
     <module>ehcache-search-parser</module>
@@ -52,13 +50,9 @@
     <dependencies>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-servlet</artifactId>
+        <artifactId>jetty-bom</artifactId>
         <version>${jetty.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-http</artifactId>
-        <version>${jetty.version}</version>
+        <type>pom</type>
       </dependency>
       <dependency>
         <groupId>org.terracotta</groupId>
