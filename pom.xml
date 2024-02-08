@@ -16,7 +16,7 @@
   <version>2.10.10-atlassiann-1-SNAPSHOT</version>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/ehcache/ehcache2.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/atlassian-forks/ehcache2.git</developerConnection>
   </scm>
 
   <properties>
