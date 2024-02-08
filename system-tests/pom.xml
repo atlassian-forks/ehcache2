@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.terracotta</groupId>
     <artifactId>system-tests-parent</artifactId>
-    <version>4.3.10-SNAPSHOT</version>
+    <version>4.3.10.12.7</version>
     <relativePath/>
   </parent>
 
@@ -30,7 +30,7 @@
     <osgi-test-tool.version>1.9</osgi-test-tool.version>
   </properties>
 
-  <dependencies>  
+  <dependencies>
     <dependency>
       <groupId>org.terracotta</groupId>
       <artifactId>terracotta</artifactId>
@@ -47,19 +47,19 @@
       <artifactId>ehcache</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
-    </dependency>   
+    </dependency>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>management-ehcache-v1</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
-    </dependency>  
+    </dependency>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>management-ehcache-v2</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
-    </dependency>   
+    </dependency>
     <dependency>
       <groupId>org.terracotta</groupId>
       <artifactId>terracotta-toolkit-runtime</artifactId>
@@ -171,7 +171,7 @@
       <groupId>net.sf.ehcache.test</groupId>
       <artifactId>hibernate-ehcache-bundle</artifactId>
       <version>${osgi-test-tool.version}</version>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>org.terracotta.test</groupId>
       <artifactId>osgi-test-utils</artifactId>
@@ -205,17 +205,17 @@
             </goals>
           </execution>
         </executions>
-      </plugin>      
+      </plugin>
     </plugins>
   </build>
-  
+
   <profiles>
     <profile>
       <id>include-container-tests</id>
-        <activation> 
+        <activation>
           <property>
             <name>appserver</name>
-          </property> 
+          </property>
         </activation>
         <build>
           <plugins>
@@ -234,11 +234,11 @@
     <profile>
       <!-- this profile nullify the effect of above profile due to usuage of no-appserver on monkeys -->
       <id>no-appserver-tests</id>
-        <activation> 
+        <activation>
           <property>
             <name>appserver</name>
             <value>no-appserver</value>
-          </property> 
+          </property>
         </activation>
         <build>
           <plugins>
@@ -255,13 +255,13 @@
             </plugin>
           </plugins>
         </build>
-    </profile>     
+    </profile>
     <profile>
       <id>deploy-sonatype</id>
       <properties>
         <skipDeploy>true</skipDeploy>
       </properties>
-    </profile>    
+    </profile>
   </profiles>
 
 </project>
