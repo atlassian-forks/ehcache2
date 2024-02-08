@@ -25,7 +25,7 @@
   <description>Clustered Ehcache sample with Terracotta</description>
 
   <properties>
-    <terracotta.version>4.3.10-SNAPSHOT</terracotta.version>
+    <terracotta.version>4.3.10.12.7</terracotta.version>
     <skipDeploy>true</skipDeploy>
   </properties>
 
