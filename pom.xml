@@ -20,6 +20,7 @@
   </scm>
 
   <properties>
+    <jetty.version>10.0.20</jetty.version>
     <thirdparty-bom.version>4.3.10.12.7</thirdparty-bom.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
@@ -38,8 +39,6 @@
     <module>ehcache-core</module>
     <module>terracotta</module>
     <module>ehcache</module>
-    <module>management-ehcache-v1</module>
-    <module>management-ehcache-v2</module>
     <module>management-ehcache-impl</module>
     <module>ehcache-scheduled-refresh</module>
     <module>ehcache-search-parser</module>
@@ -47,6 +46,12 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-bom</artifactId>
+        <version>${jetty.version}</version>
+        <type>pom</type>
+      </dependency>
       <dependency>
         <groupId>org.terracotta</groupId>
         <artifactId>thirdparty-bom-4.x</artifactId>
@@ -369,15 +374,12 @@
 
   <distributionManagement>
     <repository>
-      <id>terracotta-nexus-staging</id>
-      <name>Terracotta Nexus Staging Repository</name>
-      <url>${terracotta-nexus-staging-url}</url>
+      <id>atlassian-3rdparty</id>
+      <url>https://packages.atlassian.com/maven/3rdparty</url>
     </repository>
     <snapshotRepository>
-      <id>terracotta-os-snapshots</id>
-       <uniqueVersion>false</uniqueVersion>
-       <name>Terracotta OS Snapshots Repository</name>
-       <url>${terracotta-os-snapshots-url}</url>
+      <id>atlassian-3rdparty-snapshot</id>
+      <url>https://packages.atlassian.com/maven/3rdparty-snapshot</url>
     </snapshotRepository>
   </distributionManagement>
 
