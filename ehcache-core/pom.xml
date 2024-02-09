@@ -24,7 +24,7 @@
     <testResources>src/test/resources</testResources>
     <name>ehcache</name>
     <skipCheckstyle>false</skipCheckstyle>
-    <tests.supplemental.args />
+    <tests.supplemental.args/>
     <tests.max.heap.size>-Xmx64m</tests.max.heap.size>
   </properties>
 

@@ -6,7 +6,7 @@
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-parent</artifactId>
     <version>3.1</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <name>ehcache-root</name>
@@ -17,7 +17,6 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/atlassian-forks/ehcache2.git</developerConnection>
-    <tag>HEAD</tag>
   </scm>
 
   <properties>
