@@ -5,7 +5,7 @@
   <parent>
     <groupId>net.sf.ehcache</groupId>
     <artifactId>management-ehcache-impl-parent</artifactId>
-    <version>2.10.10-atlassian-1-SNAPSHOT</version>
+    <version>2.10.10-atlassian-1-m03</version>
     <relativePath>..</relativePath>
   </parent>
 
@@ -55,7 +55,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <private-classpath/>
+        <private-classpath />
         <private-class-suffix>.class</private-class-suffix>
       </properties>
       <build>
@@ -144,7 +144,7 @@
                 </filter>
               </filters>
               <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
               </transformers>
             </configuration>
             <executions>
