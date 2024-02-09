@@ -23,16 +23,6 @@
   </properties>
 
   <dependencies>
-    <!--<dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>management-ehcache-impl-v1</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>management-ehcache-impl-v2</artifactId>
-      <version>${project.version}</version>
-    </dependency>-->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
