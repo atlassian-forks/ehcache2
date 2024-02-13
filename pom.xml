@@ -13,17 +13,18 @@
   <groupId>net.sf.ehcache</groupId>
   <artifactId>ehcache-root</artifactId>
   <packaging>pom</packaging>
-  <version>2.10.10-SNAPSHOT</version>
+  <version>2.10.10-atlassian-1-SNAPSHOT</version>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/ehcache/ehcache2.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/atlassian-forks/ehcache2.git</developerConnection>
   </scm>
-  
+
   <properties>
-    <thirdparty-bom.version>4.3.10-SNAPSHOT</thirdparty-bom.version>
+    <jetty.version>10.0.20</jetty.version>
+    <thirdparty-bom.version>4.3.10.12.7</thirdparty-bom.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
-    <management-core.version>2.1.30-SNAPSHOT</management-core.version>
+    <management-core.version>4.3.10.12.7</management-core.version>
     <clustered-entity-management.version>0.11.1</clustered-entity-management.version>
     <statistics.version>1.0.5</statistics.version>
     <quartz.version>2.2.3</quartz.version>
@@ -38,8 +39,6 @@
     <module>ehcache-core</module>
     <module>terracotta</module>
     <module>ehcache</module>
-    <module>management-ehcache-v1</module>
-    <module>management-ehcache-v2</module>
     <module>management-ehcache-impl</module>
     <module>ehcache-scheduled-refresh</module>
     <module>ehcache-search-parser</module>
@@ -47,6 +46,12 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-bom</artifactId>
+        <version>${jetty.version}</version>
+        <type>pom</type>
+      </dependency>
       <dependency>
         <groupId>org.terracotta</groupId>
         <artifactId>thirdparty-bom-4.x</artifactId>
@@ -100,6 +105,14 @@
   <build>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
@@ -161,7 +174,7 @@
               <artifactId>terracotta-shader</artifactId>
               <version>1.2</version>
             </dependency>
-          </dependencies>          
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.gmaven</groupId>
@@ -369,15 +382,12 @@
 
   <distributionManagement>
     <repository>
-      <id>terracotta-nexus-staging</id>
-      <name>Terracotta Nexus Staging Repository</name>
-      <url>${terracotta-nexus-staging-url}</url>
+      <id>atlassian-3rdparty</id>
+      <url>https://packages.atlassian.com/maven/3rdparty</url>
     </repository>
     <snapshotRepository>
-      <id>terracotta-os-snapshots</id>
-       <uniqueVersion>false</uniqueVersion>
-       <name>Terracotta OS Snapshots Repository</name>
-       <url>${terracotta-os-snapshots-url}</url>
+      <id>atlassian-3rdparty-snapshot</id>
+      <url>https://packages.atlassian.com/maven/3rdparty-snapshot</url>
     </snapshotRepository>
   </distributionManagement>
 

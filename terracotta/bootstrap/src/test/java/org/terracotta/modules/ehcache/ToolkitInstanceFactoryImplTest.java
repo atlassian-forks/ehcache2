@@ -64,6 +64,7 @@ import com.terracotta.entity.ehcache.EhcacheEntitiesNaming;
 import com.terracotta.entity.ehcache.ToolkitBackedClusteredCacheManager;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import junit.framework.Assert;
 
@@ -210,7 +211,7 @@ public class ToolkitInstanceFactoryImplTest {
     when(wanUtil.isWanEnabledCache(CACHE_MANAGER_NAME, CACHE_NAME)).thenReturn(false);
     return this;
   }
-  
+
   @Test
   public void testAddCacheEntityInfo() {
     factory.addCacheEntityInfo(CACHE_NAME, new CacheConfiguration(), "testTKCacheName");
