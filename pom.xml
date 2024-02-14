@@ -49,12 +49,6 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-bom</artifactId>
-        <version>${jetty.version}</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
         <groupId>org.terracotta</groupId>
         <artifactId>thirdparty-bom-4.x</artifactId>
         <version>${thirdparty-bom.version}</version>
