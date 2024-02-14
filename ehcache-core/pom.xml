@@ -5,7 +5,7 @@
   <parent>
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache-root</artifactId>
-    <version>2.10.10-atlassian-1-SNAPSHOT</version>
+    <version>2.10.10-atlassian-1</version>
   </parent>
 
   <groupId>net.sf.ehcache.internal</groupId>
@@ -24,7 +24,7 @@
     <testResources>src/test/resources</testResources>
     <name>ehcache</name>
     <skipCheckstyle>false</skipCheckstyle>
-    <tests.supplemental.args/>
+    <tests.supplemental.args />
     <tests.max.heap.size>-Xmx64m</tests.max.heap.size>
   </properties>
 
