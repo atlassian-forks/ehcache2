@@ -15,7 +15,7 @@
   <version>2.7.8-atlassian-1</version>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/ehcache/ehcache2.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/atlassian-forks/ehcache2.git</developerConnection>
     <tag>ehcache-root-2.7.8-atlassian-1</tag>
   </scm>
   
