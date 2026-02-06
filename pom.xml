@@ -379,15 +379,12 @@
 
   <distributionManagement>
     <repository>
-      <id>terracotta-nexus-staging</id>
-      <name>Terracotta Nexus Staging Repository</name>
-      <url>${terracotta-nexus-staging-url}</url>
+      <id>atlassian-3rdparty</id>
+      <url>https://packages.atlassian.com/maven/3rdparty</url>
     </repository>
     <snapshotRepository>
-      <id>terracotta-os-snapshots</id>
-       <uniqueVersion>false</uniqueVersion>
-       <name>Terracotta OS Snapshots Repository</name>
-       <url>${terracotta-os-snapshots-url}</url>
+      <id>atlassian-3rdparty-snapshot</id>
+      <url>https://packages.atlassian.com/maven/3rdparty-snapshot</url>
     </snapshotRepository>
   </distributionManagement>
 
