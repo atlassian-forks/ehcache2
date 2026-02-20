@@ -141,8 +141,9 @@ public class CacheConfigurationElement extends SimpleNodeElement {
      * @param cacheConfiguration
      */
     public static void addCommonChildElementsWithDefaultCache(NodeElement element, CacheConfiguration cacheConfiguration) {
-        for (FactoryConfigurationElement child : getAllFactoryElements(element, "cacheEventListenerFactory", cacheConfiguration
+        for (Object child1 : getAllFactoryElements(element, "cacheEventListenerFactory", cacheConfiguration
                 .getCacheEventListenerConfigurations())) {
+            FactoryConfigurationElement child = (FactoryConfigurationElement) child1;
             CacheEventListenerFactoryConfiguration factoryConfiguration = (CacheEventListenerFactoryConfiguration) child
                     .getFactoryConfiguration();
             child.addAttribute(new SimpleNodeAttribute("listenFor", factoryConfiguration.getListenFor()));
