@@ -16,7 +16,7 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/atlassian-forks/ehcache2.git</developerConnection>
-    <tag>ehcache-root-2.7.8-atlassian-1</tag>
+    <tag>HEAD</tag>
   </scm>
   
   <properties>
@@ -253,6 +253,13 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>2.8.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
