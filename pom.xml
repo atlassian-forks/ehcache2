@@ -26,7 +26,7 @@
     <terracotta-toolkit-api-internal.version>1.19</terracotta-toolkit-api-internal.version>
     <management-core.version>4.4.0.3.31</management-core.version>
     <clustered-entity-management.version>0.11.1</clustered-entity-management.version>
-    <statistics.version>1.0.5</statistics.version>
+    <statistics.version>1.0.6</statistics.version>
     <quartz.version>2.2.3</quartz.version>
     <skipJavadoc>false</skipJavadoc>
     <groovy.version>4.0.5</groovy.version>
